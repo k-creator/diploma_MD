@@ -47,7 +47,6 @@ for nodules in nodules_path_list:
                     # mask = create_mask(coordinates, mask)
                     mask = create_mask(coordinates, mask)
 
-                    print(mask)
                 except Exception:
                     print('exception')
                     continue
