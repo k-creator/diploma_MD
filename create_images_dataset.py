@@ -37,14 +37,20 @@ for nodules in nodules_path_list:
             # сравниваем показатели из xml с полученными со слайса значениями
             if (str(_slice.SOPInstanceUID) == str(dict_of_nodule['imageSOP_UID'])) and\
                     (float(_slice.SliceLocation) == float(dict_of_nodule['imageZposition'])):
-                pixel_array = _slice.pixel_array
-                coordinates = dict_of_nodule['coordinates']
-                coordinates = np.asarray(coordinates)
+                try:
+                    pixel_array = _slice.pixel_array
+                    coordinates = dict_of_nodule['coordinates']
+                    coordinates = np.asarray(coordinates)
 
-                mask = np.zeros(np.shape(pixel_array))
+                    mask = np.zeros(np.shape(pixel_array))
 
-                # mask = create_mask(coordinates, mask)
-                mask = create_mask(coordinates, mask)
+                    # mask = create_mask(coordinates, mask)
+                    mask = create_mask(coordinates, mask)
+
+                    print(mask)
+                except Exception:
+                    print('exception')
+                    continue
 
                 save_image_path = r'D:\CANCER\ready_dataset\images'
                 save_label_path = r'D:\CANCER\ready_dataset\labels'
