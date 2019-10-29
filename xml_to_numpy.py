@@ -78,7 +78,7 @@ for patient_folder in patient_dir:
                                     yCoord = edgeMap.getElementsByTagName('yCoord')
                                     yCoord = yCoord[0].firstChild.data
 
-                                    points.append([xCoord, yCoord])
+                                    points.append([int(xCoord), int(yCoord)])
 
                                 nodule['coordinates'] = points
 

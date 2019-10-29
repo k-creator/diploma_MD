@@ -1,3 +1,4 @@
+cv2
 absl-py==0.8.0
 astor==0.8.0
 attrs==19.3.0
@@ -35,6 +36,7 @@ Keras==2.3.0
 Keras-Applications==1.0.8
 Keras-Preprocessing==1.1.0
 kiwisolver==1.1.0
+llvmlite==0.30.0
 Markdown==3.1.1
 MarkupSafe==1.1.1
 matplotlib==3.1.1
@@ -44,7 +46,9 @@ mpi4py==3.0.2
 nbconvert==5.6.0
 nbformat==4.4.0
 notebook==6.0.1
+numba==0.46.0
 numpy==1.17.2
+opencv-contrib-python==4.1.1.26
 pandas==0.25.1
 pandocfilters==1.4.2
 parso==0.5.1

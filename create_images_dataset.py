@@ -5,6 +5,8 @@ import glob as glb
 import cv2
 import pandas as pd
 import os
+import time
+import datetime
 
 nodule_path = r'D:\CANCER\data_prepare'
 nodules_path_list = glb.glob(nodule_path + r'\*.npy')
@@ -24,7 +26,9 @@ def create_mask(points, label):
     return label
 
 
-for nodules in nodules_path_list:
+start = time.time()
+
+for nodules in nodules_path_list[300:600]:
     array_data_of_nodules_dicts = np.load(nodules, allow_pickle=True)
     # print(array_data_of_nodules_dicts[0])
 
@@ -60,8 +64,8 @@ for nodules in nodules_path_list:
                 if not os.path.exists(save_label_path):
                     os.makedirs(save_label_path)
 
-                np.save(save_image_path + r'\image_' + str(counter) + r'.npy', pixel_array)
-                np.save(save_label_path + r'\label_' + str(counter) + r'.npy', mask)
+                np.save(save_image_path + r'\image_1_' + str(counter) + r'.npy', pixel_array)
+                np.save(save_label_path + r'\label_1_' + str(counter) + r'.npy', mask)
                 counter += 1
 
                 classification_row = {}
@@ -84,10 +88,12 @@ save_path = r'D:\CANCER\ready_dataset'
 if not os.path.exists(save_path):
     os.makedirs(save_path)
 
-df.to_csv(save_path + r'\classification_table.csv')
+df.to_csv(save_path + r'\classification_table_EXTEND.csv')
 
 print('-------------------------------')
-print('\n\n Table saved successfully')
+print('\n Table saved successfully\n')
 print('-------------------------------')
 
+stop = time.time()
+print(str(datetime.timedelta(seconds=round(stop - start))))
 
